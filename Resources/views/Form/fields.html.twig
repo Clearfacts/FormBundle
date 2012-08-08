@@ -1,0 +1,129 @@
+{% extends 'MopaBootstrapBundle:Form:fields.html.twig' %}
+
+{% block form_errors %}
+    {% spaceless %}
+        {% set printed_start = false %}
+        
+        {% for child in form %}                        
+            {% for error in child.vars.errors %}
+                {% if (printed_start == false) %}
+                    <div class="alert alert-error">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>Opgelet:</strong>
+                        De waarden die je ingaf, zijn niet allemaal correct. Gelieve volgende problemen op te lossen en het formulier opnieuw te verzenden:
+
+                        <ul>
+                        {% set printed_start = true %}
+                {% endif %}
+                            
+                <li>{{ error.messageTemplate }}</li>
+                
+            {% endfor %}
+                {% if (printed_start and loop.last) %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endspaceless %}
+{% endblock form_errors %}
+
+{% block date_widget %}
+{% spaceless %}
+{% if widget == 'single_text' %}
+{% set type = type|default('text') %}
+    {% if type != 'hidden' and widget_addon.type|default(null) is not null %}
+    <div class="input-{{ widget_addon.type }}">
+        {% if widget_addon.type == 'prepend' %}
+        {{ block('widget_addon') }}
+        {% endif %}
+    {% endif %}
+    {% if not widget_remove_btn|default(null) %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' not-removable'}) %}
+    {% endif %}
+    {% if masked_input|default(false) %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' masked-input'}) %}
+        {% set attr = attr|merge({'masked-input-mask': masked_input.mask}) %}
+        {% set attr = attr|merge({'masked-input-placeholder': masked_input.placeholder}) %}
+    {% endif %} 
+    <div class="input-append">
+      <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}"{% endif %} data-date-format="dd/mm/yyyy" />
+    </div>    
+    {% if help_tooltip|default(false) %}
+        &nbsp;<a href="#" class="btn help-popover" rel="popover" title="{{ help_tooltip }}"><i class="icon-question-sign"></i></a>
+    {% endif %}
+    {% if support_text|default(false) %}
+        <p class="help-block"><em>{{ support_text }}</em></p>
+    {% endif %}
+    {% if type != 'hidden' and  widget_addon.type|default(null) is not null %}
+        {% if widget_addon.type == 'append' %}
+        {{ block('widget_addon') }}
+        {% endif %}
+    </div>
+    {% endif %}
+{% else %}
+        {% set attr = attr|merge({'class': attr.class|default('inline')}) %}
+            {{ date_pattern|replace({
+                '{{ year }}':  form_widget(form.year, {'attr': {'class': attr.widget_class|default('') ~ ' input-small'}}),
+                '{{ month }}': form_widget(form.month, {'attr': {'class': attr.widget_class|default('') ~ ' input-mini'}}),
+                '{{ day }}':   form_widget(form.day, {'attr': {'class': attr.widget_class|default('') ~ ' input-mini'}}),
+            })|raw }}
+        {{ block('help') }}
+{% endif %}
+{% endspaceless %}
+{% endblock date_widget %}
+
+{% block form_widget_simple %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    {% if type != 'hidden' and widget_addon.type|default(null) is not null %}
+    <div class="input-{{ widget_addon.type }}">
+        {% if widget_addon.type == 'prepend' %}
+        {{ block('widget_addon') }}
+        {% endif %}
+    {% endif %}
+    {% if not widget_remove_btn|default(null) %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' not-removable'}) %}
+    {% endif %}
+    {% if masked_input|default(false) %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' masked-input'}) %}
+        {% set attr = attr|merge({'masked-input-mask': masked_input.mask}) %}
+        {% set attr = attr|merge({'masked-input-placeholder': masked_input.placeholder}) %}
+    {% endif %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% if type != 'hidden' and  widget_addon.type|default(null) is not null %}
+        {% if widget_addon.type == 'append' %}
+        {{ block('widget_addon') }}
+        {% endif %}
+        {% if help_tooltip|default(false) %}
+            &nbsp;<a href="#" class="btn help-popover" rel="popover" title="{{ help_tooltip }}"><i class="icon-question-sign"></i></a>
+        {% endif %}
+        {% if support_text|default(false) %}
+            <p class="help-block">{{ support_text }}</p>
+        {% endif %}
+    </div>
+    {% else %}
+        {% if help_tooltip|default(false) %}
+            &nbsp;<a href="#" class="btn help-popover" rel="popover" title="{{ help_tooltip }}"><i class="icon-question-sign"></i></a>
+        {% endif %}
+        {% if support_text|default(false) %}
+            <p class="help-block"><em>{{ support_text }}</em></p>
+        {% endif %}
+    {% endif %}
+{% endspaceless %}
+{% endblock form_widget_simple %}
+
+{% block field_errors %}
+
+{% endblock %}
+
+{% block form_legend %}
+
+{% endblock %}
+            
+{% block label_asterisk %}
+{% if required %}
+    {% if render_required_asterisk %}*{% endif %}
+{% else %}
+    {% if render_optional_text %}<br /><em>(optioneel)</em>{% endif %}
+{% endif %}
+{% endblock label_asterisk %}

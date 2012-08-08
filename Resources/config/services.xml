@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--
+    <parameters />       
+    
+    </parameters>    
+    -->
+    
+    <services>
+        <service id="form.type.masked_input" class="Tactics\Bundle\FormBundle\Form\Extension\MaskedInputTypeExtension">        
+            <tag name="form.type_extension" alias="text" />
+        </service>
+        <service id="form.type.masked_date" class="Tactics\Bundle\FormBundle\Form\Extension\MaskedDateTypeExtension">        
+            <tag name="form.type_extension" alias="date" />
+        </service>
+        <service id="form.type.support_text" class="Tactics\Bundle\FormBundle\Form\Extension\SupportTextTypeExtension">
+            <tag name="form.type_extension" alias="field" />
+        </service>
+        <service id="form.type.help_tooltip" class="Tactics\Bundle\FormBundle\Form\Extension\HelpTooltipTypeExtension">
+            <tag name="form.type_extension" alias="field" />
+        </service>
+        <service id="form.type.rijksregisternummer" class="Tactics\Bundle\FormBundle\Form\Type\RijksregisternummerType">        
+            <tag name="form.type" alias="rijksregisternummer" />
+        </service>
+        <service id="form.type.datum" class="Tactics\Bundle\FormBundle\Form\Type\DatumType">        
+            <tag name="form.type" alias="datum" />
+        </service>
+    </services>
+    
+</container>
