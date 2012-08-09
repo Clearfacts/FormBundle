@@ -17,8 +17,8 @@
     "fzaninotto/faker": "dev-master"
   },
   "autoload": {
-    "psr-0": { "Tactics\\FormBundle": "" }
+    "psr-0": { "Tactics\\Bundle\\FormBundle": "" }
   },
-  "target-dir": "Tactics/FormBundle",
+  "target-dir": "Tactics/Bundle/FormBundle",
   "minimum-stability": "dev"
 }
