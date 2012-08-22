@@ -51,6 +51,7 @@ class MaskedDateTypeExtension extends AbstractTypeExtension
     {
         return array(
             'masked_input' => null,            
+            'format'       => 'dd/mm/yyy'
         );
     }
     
