@@ -1,3 +1,5 @@
 jQuery(document).ready(function($) {
-    $(".cancelbutton").onclick(history.back())
+    $(".cancelbutton").click(function(){
+      history.back();
+    });
 });
