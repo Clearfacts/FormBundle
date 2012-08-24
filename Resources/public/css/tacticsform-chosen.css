@@ -1,0 +1,16 @@
+/* 
+    Document   : tacticsform-chosen.css
+    Created on : 24-aug-2012, 8:26:09
+    Author     : Gert Vrebos <gert.vrebos at tactics.be>
+    Description:
+        Larger version of chosen, with a single item per line
+*/
+
+.chzn-container-multi.large .chzn-choices li { 
+    float: none;    
+}
+
+.chzn-container-multi .chzn-choices .search-choice {
+    margin: 3px 3px 3px 5px;
+}
+
