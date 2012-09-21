@@ -9,7 +9,7 @@ FormBundle
     (automatically enabled when required = false and the empty option has empty text)
 
 ### Options
- * Large (single item per line): add attribute "chosen-class" => "large
+ * Large (single item per line): add attribute "data-chosen-class" => "large
  * Ajax autocomplete: add attribute 'data-chosen-ajax-url' 
 
 ### Full Example
@@ -26,7 +26,7 @@ FormBundle
         'multiple' => true,
         'attr' => array(
             'class' => 'chosen',
-            'chosen-class' => 'large'
+            'data-chosen-class' => 'large'
         )
     )); 
 
