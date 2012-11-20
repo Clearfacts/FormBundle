@@ -10,12 +10,12 @@
   }],
   "require": {
     "symfony/symfony": "2.1.*",
-    "propel/propel1": "1.6.*"
+    "propel/propel1": "1.6.*",
+    "mopa/bootstrap-bundle": "dev-master"
   },
   "require-dev": {
     "sensio/framework-extra-bundle": "dev-master",
     "fzaninotto/faker": "dev-master",
-    "mopa/bootstrap-bundle": "dev-master"
   },
   "autoload": {
     "psr-0": { "Tactics\\Bundle\\FormBundle": "" }
