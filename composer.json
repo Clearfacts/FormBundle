@@ -14,7 +14,8 @@
   },
   "require-dev": {
     "sensio/framework-extra-bundle": "dev-master",
-    "fzaninotto/faker": "dev-master"
+    "fzaninotto/faker": "dev-master",
+    "mopa/bootstrap-bundle": "dev-master"
   },
   "autoload": {
     "psr-0": { "Tactics\\Bundle\\FormBundle": "" }
