@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
     // Enable chosen on every select list with the chosen class
     $(".chosen").each(function()
     {
-        var options = {};
+        var options = {disable_search_threshold: 5};
         var $this = $(this);
     
         // enable 'x' on input to remove selected value when single select
