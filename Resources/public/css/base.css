@@ -1,0 +1,26 @@
+/* 
+    Document   : base
+    Created on : 26-sep-2012, 13:27:23
+    Author     : Gert Vrebos <gert.vrebos at tactics.be>
+    Description:
+        Generic form styles
+        Only simple and generic stuff goes here
+*/
+
+/* DatumType */
+
+input.datepicker
+{
+    width: 75px;
+}
+
+/* Chosen */
+
+.chzn-container-multi.large .chzn-choices li { 
+    float: none;    
+}
+
+.chzn-container-multi.large .chzn-choices .search-choice {
+    margin: 3px 5px 3px 5px;
+}
+

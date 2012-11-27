@@ -14,7 +14,6 @@ FormBundle
 
 ### Full Example
     @TacticsFormBundle/Resources/public/css/chosen.css
-    @TacticsFormBundle/Resources/public/css/tacticsform-chosen.css
 
     @TacticsFormBundle/Resources/public/js/chosen.jquery.min.js
     @TacticsFormBundle/Resources/public/js/tacticsform-chosen.js
