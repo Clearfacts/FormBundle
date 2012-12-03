@@ -44,6 +44,6 @@
     }
     
 jQuery(document).ready(function($) {
-    //initialiseChosenFields();
+    initialiseChosenFields();
     
 });
