@@ -13,7 +13,7 @@
                         {% set printed_start = true %}
                 {% endif %}
 
-                <li>{{ error.messageTemplate }}</li>
+                <li>{{ error.messageTemplate|trans(error.messageParameters, 'validators') }}</li>
             {% endfor %}
         {% endif %}
         {% for child in form %}
@@ -26,7 +26,7 @@
                         {% set printed_start = true %}
                 {% endif %}
 
-                <li>{{ error.messageTemplate }}</li>
+                <li>{{ error.messageTemplate|trans(error.messageParameters, 'validators') }}</li>
 
             {% endfor %}
                 {% if (printed_start and loop.last) %}
