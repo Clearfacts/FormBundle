@@ -1,44 +1,49 @@
-jQuery(document).ready(function($) {
-    
-    // Enable chosen on every select list with the chosen class
-    $(".chosen").each(function()
+    function initialiseChosenFields()
     {
-        var options = {};
-        var $this = $(this);
-    
-        // enable 'x' on input to remove selected value when single select
-        // and not required
-        options.allow_single_deselect = $this.attr('required') ? false : true;
-        
-        // default chosen from select list
-        if (! $this.attr('data-chosen-ajax-url'))
+        // Enable chosen on every select list with the chosen class
+        $(".chosen").each(function()
         {
-            $this.chosen(options);
-        }
-        // chosen with ajax
-        else
-        {
-            options = $.extend([], {
-                method: 'GET',
-                url: $this.attr('data-chosen-ajax-url'),
-                dataType: 'json',
-                allow_single_deselect: true
-            });
-            
-            $this.ajaxChosen(options, function (data) {
-                var terms = {};
+            var options = {disable_search_threshold: 5};
+            var $this = $(this);
 
-                $.each(data, function (i, val) {
-                    terms[i] = val;
+            // enable 'x' on input to remove selected value when single select
+            // and not required
+            options.allow_single_deselect = $this.attr('required') ? false : true;
+
+            // default chosen from select list
+            if (! $this.attr('data-chosen-ajax-url'))
+            {
+                $this.chosen(options);
+            }
+            // chosen with ajax
+            else
+            {
+                options = $.extend([], {
+                    method: 'GET',
+                    url: $this.attr('data-chosen-ajax-url'),
+                    dataType: 'json',
+                    allow_single_deselect: true
                 });
 
-                return terms;
-            });
-        }
-    });
+                $this.ajaxChosen(options, function (data) {
+                    var terms = {};
+
+                    $.each(data, function (i, val) {
+                        terms[i] = val;
+                    });
+
+                    return terms;
+                });
+            }
+        });
+
+        // add chosen-class as class to chosen container
+        $(".chosen").each(function(){
+            $(this).next('.chzn-container').addClass($(this).attr('data-chosen-class'));
+        });
+    }
     
-    // add chosen-class as class to chosen container
-    $(".chosen").each(function(){
-        $(this).next('.chzn-container').addClass($(this).attr('data-chosen-class'));
-    });
+jQuery(document).ready(function($) {
+    initialiseChosenFields();
+    
 });
