@@ -32,6 +32,9 @@
         <service id="form.type.datum" class="Tactics\Bundle\FormBundle\Form\Type\DatumType">        
             <tag name="form.type" alias="datum" />
         </service>
+        <service id="form.type.currency" class="Tactics\Bundle\FormBundle\Form\Type\CurrencyType">        
+            <tag name="form.type" alias="currency" />
+        </service>
     </services>
     
 </container>
