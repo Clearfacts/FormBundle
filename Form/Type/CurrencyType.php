@@ -105,6 +105,6 @@ class CurrencyType extends AbstractType
      */
     protected function getPreferredChoices()
     {
-        return array('EUR', 'CHF');
+        return array('EUR', 'USD');
     }
 }
