@@ -4,10 +4,11 @@ FormBundle
 Types
 -----
 
-  * currency
-    Automatically sets choices to all available currencies. preferred choices
-    are EUR and USD.
-    ```$builder->add('currency', 'currency');```
+### currency
+  
+Automatically sets choices to all available currencies. preferred choices are EUR and USD.
+
+```$builder->add('currency', 'currency');```
 
  Chosen
 --------
