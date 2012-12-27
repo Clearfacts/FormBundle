@@ -7,11 +7,30 @@
         Only simple and generic stuff goes here
 */
 
-/* DatumType */
+/* Date / Time types */
 
-input.datepicker
+input.datepicker,
+div.tactics_datetime div input:not([type="time"])
 {
-    width: 75px;
+    width: 67px;
+}
+
+input.timepicker,
+div.tactics_datetime input[type="time"]
+{
+    width: 35px;
+}
+
+div.input-append [class^="icon-"],
+div.input-append [class*=" icon-"] {
+    height: auto !important;
+}
+
+.btn.ui-timepicker-trigger,
+.btn.ui-datepicker-trigger
+{
+    padding: 4px 6px;
+    height: 24px;
 }
 
 /* Chosen */
