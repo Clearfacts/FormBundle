@@ -68,8 +68,42 @@ FormBundle
         return $response;
     }
 
+ Date / Time / DateTime Widgets
+--------------------------------
 
-### Below: Stuff to remove from docs?
+ * Proper masks
+ * date and time picker UI
+ * extend from native Symfony widgets
+ * note: 'datum' widget is deprecated in favor of 'tactics_date'
+
+### Example
+
+    $builder->add('publish_at', 'tactics_datetime');
+    $builder->add('birthdate', 'tactics_date');
+    $builder->add('hour_open', 'tactics_time');
+
+    {% javascripts 
+        '@TacticsFormBundle/Resources/public/js/jquery.maskedinput-1.3.min.js'
+        '@TacticsFormBundle/Resources/public/js/jquery-ui-1.8.22.custom.min.js'
+        '@TacticsFormBundle/Resources/public/js/tacticsform-masked-input.js'
+        '@TacticsFormBundle/Resources/public/js/tacticsform-datum-input.js'
+
+        time and datetime only:
+        '@TacticsFormBundle/Resources/public/js/jquery.ui.timepicker.js'
+    %}
+
+    {% stylesheets
+        admin bundle includes this one by default:
+        '@TacticsFormBundle/Resources/public/css/base.css' 
+
+        time and datetime only:
+        '@TacticsFormBundle/Resources/public/css/jquery.ui.timepicker.css' 
+    %}
+
+
+
+Below: Stuff to remove from docs?
+----------------------------------
 
 Polyfill fields:
   So far javascripts have been added to emulate the behavior of an html 5 number field type in older browsers
