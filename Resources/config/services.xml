@@ -11,8 +11,8 @@
     -->
     
     <services>
-        <service id="form.type.masked_input" class="Tactics\Bundle\FormBundle\Form\Extension\MaskedInputTypeExtension">        
-            <tag name="form.type_extension" alias="text" />
+        <service id="form.type.masked_field" class="Tactics\Bundle\FormBundle\Form\Extension\MaskedFieldTypeExtension">
+            <tag name="form.type_extension" alias="field" />
         </service>
         <service id="form.type.masked_date" class="Tactics\Bundle\FormBundle\Form\Extension\MaskedDateTypeExtension">        
             <tag name="form.type_extension" alias="date" />
