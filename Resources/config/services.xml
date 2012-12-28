@@ -44,6 +44,7 @@
         </service>
         <service id="form.type.tactics_datetime" class="Tactics\Bundle\FormBundle\Form\Type\DateTimeType">        
             <tag name="form.type" alias="tactics_datetime" />
+        </service>
         <service id="form.type.currency" class="Tactics\Bundle\FormBundle\Form\Type\CurrencyType">        
             <tag name="form.type" alias="currency" />
         </service>
