@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class MaskedInputTypeExtension extends AbstractTypeExtension
+class MaskedFieldTypeExtension extends AbstractTypeExtension
 {
     /**
      * Builds the form.
