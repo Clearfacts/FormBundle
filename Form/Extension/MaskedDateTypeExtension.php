@@ -21,7 +21,7 @@ class MaskedDateTypeExtension extends AbstractTypeExtension
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->setAttribute('masked_input', $options['masked_input']);        
+        $builder->setAttribute('masked_input', $options['masked_input']);
     }
 
     /**
@@ -37,7 +37,7 @@ class MaskedDateTypeExtension extends AbstractTypeExtension
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->set('masked_input', $form->getAttribute('masked_input'));        
+        $view->set('masked_input', $form->getAttribute('masked_input'));
     }
 
     /**
@@ -50,11 +50,11 @@ class MaskedDateTypeExtension extends AbstractTypeExtension
     public function getDefaultOptions()
     {
         return array(
-            'masked_input' => null,            
-            'format'       => 'dd/mm/yyy'
+            'masked_input' => null,
+            'format'       => 'dd/MM/yyyy'
         );
     }
-    
+
     /**
      * Returns the name of the type being extended
      *
