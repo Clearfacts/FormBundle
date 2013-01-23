@@ -14,11 +14,11 @@ function addFormToCollection(collectionName) {
     // append the form to the collection        
     $collectionHolder.append(newTr);
     // reapply chosen?
-    $('.chosen').chosen();  
+    initialiseChosenFields();
 }
 
 jQuery(document).ready(function() {
-    $('.collection-add-btn').on('click', function(e) {                
+    $('body').on('click', '.collection-add-btn', function(e) {                
         // prevent the link from creating a "#" on the URL
         e.preventDefault();
 
