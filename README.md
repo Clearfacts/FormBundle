@@ -109,7 +109,23 @@ Automatically sets choices to all available currencies. preferred choices are EU
         '@TacticsFormBundle/Resources/public/css/jquery.ui.timepicker.css' 
     %}
 
+time- and datepicker fields trigger following events.
+    
+    jQuery('#tactics-date-field').on('datepicker.select', function() {
 
+    });
+
+    jQuery('#tactics-date-field').on('datepicker.close', function() {
+
+    });
+
+    jQuery('#tactics-time-field').on('timepicker.select', function() {
+
+    });
+
+    jQuery('#tactics-time-field').on('timepicker.close', function() {
+
+    });
 
 Below: Stuff to remove from docs?
 ----------------------------------

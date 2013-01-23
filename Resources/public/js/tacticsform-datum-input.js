@@ -4,12 +4,18 @@ jQuery(document).ready(function($) {
   
     // create date picker(s)
     $('.datepicker, .tactics_datetime > div > input').datepicker({
-      buttonText: '<i class="icon-calendar"></i>',
-      changeMonth: true,
-      changeYear: true,
-      dateFormat: 'dd/mm/yy',
-      showButtonPanel: true,
-      showOn: 'button'
+        buttonText: '<i class="icon-calendar"></i>',
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd/mm/yy',
+        showButtonPanel: true,
+        showOn: 'button',
+        onSelect: function(){
+            $(this).trigger('datepicker.select');
+        },
+        onClose: function(){
+            $(this).trigger('datepicker.close');
+        }
     })
     // disable tab select
     .next('button.ui-datepicker-trigger')
@@ -35,7 +41,13 @@ jQuery(document).ready(function($) {
             button: btn,
             showCloseButton: true,
             showNowButton: true,
-            showDeselectButton: true
+            showDeselectButton: true,
+            onSelect: function(){
+                $(this).trigger('timepicker.select');
+            },
+            onClose: function(){
+                $(this).trigger('timepicker.close');
+            }
         });
     })
     
