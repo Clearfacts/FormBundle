@@ -1,6 +1,15 @@
 FormBundle
 ===========
 
+Types
+-----
+
+### currency
+  
+Automatically sets choices to all available currencies. preferred choices are EUR and USD.
+
+```$builder->add('currency', 'currency');```
+
  Chosen
 --------
 
@@ -14,7 +23,6 @@ FormBundle
 
 ### Full Example
     @TacticsFormBundle/Resources/public/css/chosen.css
-    @TacticsFormBundle/Resources/public/css/tacticsform-chosen.css
 
     @TacticsFormBundle/Resources/public/js/chosen.jquery.min.js
     @TacticsFormBundle/Resources/public/js/tacticsform-chosen.js
@@ -69,8 +77,58 @@ FormBundle
         return $response;
     }
 
+ Date / Time / DateTime Widgets
+--------------------------------
 
-### Below: Stuff to remove from docs?
+ * Proper masks
+ * date and time picker UI
+ * extend from native Symfony widgets
+ * note: 'datum' widget is deprecated in favor of 'tactics_date'
+
+### Example
+
+    $builder->add('publish_at', 'tactics_datetime');
+    $builder->add('birthdate', 'tactics_date');
+    $builder->add('hour_open', 'tactics_time');
+
+    {% javascripts 
+        '@TacticsFormBundle/Resources/public/js/jquery.maskedinput-1.3.min.js'
+        '@TacticsFormBundle/Resources/public/js/jquery-ui-1.8.22.custom.min.js'
+        '@TacticsFormBundle/Resources/public/js/tacticsform-masked-input.js'
+        '@TacticsFormBundle/Resources/public/js/tacticsform-datum-input.js'
+
+        time and datetime only:
+        '@TacticsFormBundle/Resources/public/js/jquery.ui.timepicker.js'
+    %}
+
+    {% stylesheets
+        admin bundle includes this one by default:
+        '@TacticsFormBundle/Resources/public/css/base.css' 
+
+        time and datetime only:
+        '@TacticsFormBundle/Resources/public/css/jquery.ui.timepicker.css' 
+    %}
+
+time- and datepicker fields trigger following events.
+    
+    jQuery('#tactics-date-field').on('datepicker.select', function() {
+
+    });
+
+    jQuery('#tactics-date-field').on('datepicker.close', function() {
+
+    });
+
+    jQuery('#tactics-time-field').on('timepicker.select', function() {
+
+    });
+
+    jQuery('#tactics-time-field').on('timepicker.close', function() {
+
+    });
+
+Below: Stuff to remove from docs?
+----------------------------------
 
 Polyfill fields:
   So far javascripts have been added to emulate the behavior of an html 5 number field type in older browsers
