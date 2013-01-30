@@ -1,7 +1,13 @@
-    function initialiseChosenFields()
+    function initialiseChosenFields(selector)
     {
-        // Enable chosen on every select list with the chosen class
-        $(".chosen").each(function()
+        if (selector) {
+            var elements = $(selector);
+        } else {
+            var elements = $('.chosen')
+        }
+
+        // Enable chosen on every select list selected
+        elements.each(function()
         {
             var options = {disable_search_threshold: 5};
             var $this = $(this);
@@ -42,8 +48,8 @@
             $(this).next('.chzn-container').addClass($(this).attr('data-chosen-class'));
         });
     }
-    
+
 jQuery(document).ready(function($) {
     initialiseChosenFields();
-    
+
 });
