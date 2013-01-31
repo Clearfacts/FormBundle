@@ -27,16 +27,22 @@ jQuery(document).ready(function($) {
 
     // for each time input field
     $('.timepicker, .tactics_datetime > input[type=time]').each(function(){
-        
-        // attach timepicker button to time field, the bootstrap way
-        $(this).wrap('<div class="input-append">');
-        $(this).after('<button class="btn ui-timepicker-trigger" type="button" tabindex="-1"><i class="icon-time"></i></button>');
+        // Replace time input by text input to prevent standard time HTML5
+        // controls from appearing.
+        var replacement = $(this.outerHTML.replace('type="time"', 'type="text"'));
+        $(this).replaceWith(replacement);
 
+        replacement.addClass('time-input');
+
+        // attach timepicker button to time field, the bootstrap way
+        replacement.wrap('<div class="input-append">');
+        replacement.after('<button class="btn ui-timepicker-trigger" type="button" tabindex="-1"><i class="icon-time"></i></button>');
+        
         // fetch reference to the button
-        var btn = $(this).next('button');
+        var btn = replacement.next('button');
         
         // create time picker
-        $(this).timepicker({
+        replacement.timepicker({
             showOn: 'button',
             button: btn,
             showCloseButton: true,

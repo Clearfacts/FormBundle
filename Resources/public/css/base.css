@@ -16,9 +16,10 @@ div.tactics_datetime div input:not([type="time"])
 }
 
 input.timepicker,
-div.tactics_datetime input[type="time"]
+div.tactics_datetime input[type="time"], 
+input.time-input
 {
-    width: 35px;
+    width: 35px !important;
 }
 
 div.input-append [class^="icon-"],
