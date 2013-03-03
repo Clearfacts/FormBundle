@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
     //inputs van type checkbox met class toggle-button wrappen in div
-    $('.toggle-button[type=checkbox]').each(function(){
+    $('.toggle-button-checkbox').each(function(){
         $(this).wrap('<div class="toggle-button" style="float:left" />')
     });
     
