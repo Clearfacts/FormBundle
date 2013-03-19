@@ -41,6 +41,7 @@
                     return terms;
                 });
             }
+	    $this.trigger("liszt:updated");
         });
 
         // add chosen-class as class to chosen container
