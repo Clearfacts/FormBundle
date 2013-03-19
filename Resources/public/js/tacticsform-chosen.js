@@ -31,6 +31,7 @@
                     allow_single_deselect: true
                 });
 
+
                 $this.ajaxChosen(options, function (data) {
                     var terms = {};
 
@@ -41,6 +42,7 @@
                     return terms;
                 });
             }
+	    $this.trigger("liszt:updated");
         });
 
         // add chosen-class as class to chosen container
@@ -53,3 +55,4 @@ jQuery(document).ready(function($) {
     initialiseChosenFields();
 
 });
+
