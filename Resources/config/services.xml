@@ -51,6 +51,10 @@
         <service id="form.type.autocomplete" class="Tactics\Bundle\FormBundle\Form\Type\AutocompleteType">
             <tag name="form.type" alias="autocomplete" />
         </service>
+        <service id="form.autocomplete.default_autocomplete" class="Tactics\Bundle\FormBundle\Autocomplete\DefaultAutocomplete">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+        <service id="default_autocomplete" alias="form.autocomplete.default_autocomplete"></service>
     </services>
 
 </container>
