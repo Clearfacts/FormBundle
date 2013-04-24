@@ -11,6 +11,10 @@
     -->
     
     <services>
+        <service id="tactics.twig.form_extension" class="Tactics\Bundle\FormBundle\Twig\FormExtension">
+            <tag name="twig.extension" />
+            <argument type="service" id="service_container" />
+        </service>
         <service id="form.type.masked_field" class="Tactics\Bundle\FormBundle\Form\Extension\MaskedFieldTypeExtension">
             <tag name="form.type_extension" alias="field" />
         </service>
