@@ -1,6 +1,20 @@
 FormBundle
 ===========
 
+Twig
+----
+
+Rendering form actions
+    
+        {{ form_save_cancel() }}
+
+Will render as
+    
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">{{ "save"|trans|capitalize }}</button>
+        <button type="button" class="btn cancelbutton">{{ "cancel"|trans|capitalize }}</button>
+    </div>
+
 Types
 -----
 
