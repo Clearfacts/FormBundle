@@ -6,7 +6,7 @@ Twig
 
 Rendering form actions
     
-        {{ form_save_cancel() }}
+    {{ form_save_cancel() }}
 
 Will render as
     
