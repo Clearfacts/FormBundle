@@ -40,7 +40,7 @@ Autocomplete
               /*
                * Either write your own query or use the default_autocomplete service:
                *
-               * Default autocomplete has needs a class, search term and property to search for
+               * Default autocomplete needs a class, search term and property to search for
                */
               $examples = $this->get('default_autocomplete')
                   ->autocomplete('TacticsAcmebundle:Example', $term, 'name')
