@@ -77,7 +77,7 @@ Autocomplete
 include '@TacticsFormBundle/Resources/public/js/tacticsform-autocomplete.js' in your template (needs chosen to work)
     
 Some tweaks and extra stuff needed. But it works. Note: you'll need a DataTransformer for this to work. 
-Should probably fix that asap.
+But I heard someone say he was going to make a generic one, should be here any moment?
 
  Chosen
 --------
