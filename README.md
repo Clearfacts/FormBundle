@@ -11,14 +11,13 @@ Automatically sets choices to all available currencies. preferred choices are EU
 ```$builder->add('currency', 'currency');```
 
 Autocomplete
-____________
-
-vb:
+------------
 
     class MyFormType
     {
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
+            // add an autocomplete type, needs a route to send the ajax call to
             $builder
                 ->add('iAutocomplete', 'autocomplete', array(
                     'route' => 'my_route',
