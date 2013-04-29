@@ -10,6 +10,71 @@ Automatically sets choices to all available currencies. preferred choices are EU
 
 ```$builder->add('currency', 'currency');```
 
+Autocomplete
+____________
+
+vb:
+
+    class MyFormType
+    {
+        public function buildForm(FormBuilderInterface $builder, array $options)
+        {
+            $builder
+                ->add('iAutocomplete', 'autocomplete', array(
+                    'route' => 'my_route',
+                    // Optional:
+                    'route_params' => array(
+                        'some_id' => 5
+                    )
+                ))
+            ;
+        }
+    }
+    
+    class MyController extends TacticsController
+    {
+        /**
+         * @Route("path/to/autocomplete/{term}", name="my_route")
+         */
+         public function autocompleteAction($term)
+         {
+              /*
+               * Either write your own query or use the default_autocomplete service:
+               *
+               * Default autocomplete has needs a class, search term and property to search for
+               */
+              $examples = $this->get('default_autocomplete')
+                  ->autocomplete('TacticsAcmebundle:Example', $term, 'name')
+              ;
+              
+              /*
+               * Default autocomplete for different EntityManager:
+               *
+               * $this->get('default_autocomplete')
+               *     ->setManager($this->getDoctrine()->getManager('not_default'))
+               *     ->autocomplete('Tactics\Bundle\AcmeBundle\Entity\Example', $term, 'name')
+               */
+               
+               /*
+                * Default autocomplete works for an array of properties as well:
+                *
+                * $this->get('default_autocomplete')
+                *     ->setManager($this->getDoctrine()->getManager('not_default'))
+                *     ->autocomplete('Tactics\Bundle\AcmeBundle\Entity\Example', $term, array('first_name', 'last_name'))
+                */
+                
+                // index the result as needed:
+                $indexed = array();
+                foreach ($examples as $example) {
+                    $indexed[$example->getIndex()] = (string) $index;
+                }
+                
+                // and return as JSON
+         }
+    }
+    
+Some tweaks and extra stuff needed. But it works.
+
  Chosen
 --------
 
