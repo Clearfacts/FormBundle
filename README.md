@@ -13,65 +13,53 @@ Automatically sets choices to all available currencies. preferred choices are EU
 Autocomplete
 ------------
 
-    class MyFormType
+    class YourFormType
     {
+        /**
+         * {@inheritDoc}
+         */
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
             // add an autocomplete type, needs a route to send the ajax call to
-            $builder
-                ->add('iAutocomplete', 'autocomplete', array(
-                    'route' => 'my_route',
-                    // Optional:
-                    'route_params' => array(
-                        'some_id' => 5
-                    )
+            ->add(
+                $builder->create('your_form_field', 'autocomplete', array(
+                  'route' => 'your_autocomplete_action',
+                  // optional add some route parameters
+                  // route_params = array('your_param' => 15),
+                  'label' => 'label.accountant'
                 ))
-            ;
+                ->addModelTransformer(new YourDataTransformer())
+            )
         }
     }
     
-    class MyController extends TacticsController
+    class YourController extends TacticsController
     {
         /**
-         * @Route("path/to/autocomplete/{some_id}", name="my_route")
+         * @Route("client/autocomplete.{_format}", defaults={"_format" = "json"}, options={"expose" = true}, name="your_autocomplete_action")
+         * @Method({"GET", "POST"})
+         * @Rest\View()
          */
-         public function autocompleteAction()
-         {
-              $term = $request->query->get('term');
-
-              /*
-               * Either write your own query or use the default_autocomplete service:
-               *
-               * Default autocomplete needs a class, search term and property to search for
-               */
-              $examples = $this->get('default_autocomplete')
-                  ->autocomplete('TacticsAcmebundle:Example', $term, 'name')
-              ;
-              
-              /*
-               * Default autocomplete for different EntityManager:
-               *
-               * $this->get('default_autocomplete')
-               *     ->setManager($this->getDoctrine()->getManager('not_default'))
-               *     ->autocomplete('Tactics\Bundle\AcmeBundle\Entity\Example', $term, 'name')
-               */
-               
-               /*
-                * Default autocomplete works for an array of properties as well:
-                *
-                * $this->get('default_autocomplete')
-                *     ->setManager($this->getDoctrine()->getManager('not_default'))
-                *     ->autocomplete('Tactics\Bundle\AcmeBundle\Entity\Example', $term, array('first_name', 'last_name'))
-                */
-                
-                // index the result as needed:
-                $indexed = array();
-                foreach ($examples as $example) {
-                    $indexed[$example->getIndex()] = (string) $index;
-                }
-                
-                // and return as JSON
-         }
+        public function autocompleteAction()
+        {
+            $term = $this->getRequest()->query->get('term');
+    
+            $examples = $this->get('default_autocomplete')
+                // if you're not using the default EntityManager, set it:
+                // ->setManager($this->getDoctrine()->getManager('your_manager')
+                ->autocomplete('TacticsCompanyBundle:Example', $term, 'your_property')
+                / or autocomplete on an array of properties (uses OR statements)
+                // ->autocomplete('TacticsExampleBundle:Example', $term, array('your_property', 'your_property2', '...')
+            ;
+    
+            // index the result the way you need it in your form
+            $indexed = array();
+            foreach ($examples as $example) {
+                $indexed[$example->getId()] = (string) $example;
+            }
+    
+            return $indexed;
+        }
     }
     
 include '@TacticsFormBundle/Resources/public/js/tacticsform-autocomplete.js' in your template (needs chosen to work)
