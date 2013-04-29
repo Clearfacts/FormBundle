@@ -72,7 +72,8 @@ Autocomplete
          }
     }
     
-Some tweaks and extra stuff needed. But it works.
+Some tweaks and extra stuff needed. But it works. Note: you'll need a DataTransformer for this to work. 
+Should probably fix that asap.
 
  Chosen
 --------
