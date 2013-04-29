@@ -33,10 +33,12 @@ Autocomplete
     class MyController extends TacticsController
     {
         /**
-         * @Route("path/to/autocomplete/{term}", name="my_route")
+         * @Route("path/to/autocomplete/{some_id}", name="my_route")
          */
-         public function autocompleteAction($term)
+         public function autocompleteAction()
          {
+              $term = $request->query->get('term');
+
               /*
                * Either write your own query or use the default_autocomplete service:
                *
@@ -71,6 +73,8 @@ Autocomplete
                 // and return as JSON
          }
     }
+    
+include '@TacticsFormBundle/Resources/public/js/tacticsform-autocomplete.js' in your template (needs chosen to work)
     
 Some tweaks and extra stuff needed. But it works. Note: you'll need a DataTransformer for this to work. 
 Should probably fix that asap.
