@@ -25,15 +25,12 @@ class AutocompleteType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setRequired(array(
-            'class',
             'route'
         ))
         ->setOptional(array(
-            'em',
             'route_params'
         ))
         ->setDefaults(array(
-            'em' => 'default',
             'route_params' => array(),
             'attr' => array(
                 'style' => 'display: none;'
