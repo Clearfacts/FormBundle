@@ -10,6 +10,63 @@ Automatically sets choices to all available currencies. preferred choices are EU
 
 ```$builder->add('currency', 'currency');```
 
+Autocomplete
+------------
+
+    class YourFormType
+    {
+        /**
+         * {@inheritDoc}
+         */
+        public function buildForm(FormBuilderInterface $builder, array $options)
+        {
+            // add an autocomplete type, needs a route to send the ajax call to
+            ->add(
+                $builder->create('your_form_field', 'autocomplete', array(
+                  'route' => 'your_autocomplete_action',
+                  // optional add some route parameters
+                  // route_params = array('your_param' => 15),
+                  'label' => 'label.accountant'
+                ))
+                ->addModelTransformer(new YourDataTransformer())
+            )
+        }
+    }
+    
+    class YourController extends TacticsController
+    {
+        /**
+         * @Route("client/autocomplete.{_format}", defaults={"_format" = "json"}, options={"expose" = true}, name="your_autocomplete_action")
+         * @Method({"GET", "POST"})
+         * @Rest\View()
+         */
+        public function autocompleteAction()
+        {
+            $term = $this->getRequest()->query->get('term');
+    
+            $examples = $this->get('default_autocomplete')
+                // if you're not using the default EntityManager, set it:
+                // ->setManager($this->getDoctrine()->getManager('your_manager')
+                ->autocomplete('TacticsCompanyBundle:Example', $term, 'your_property')
+                / or autocomplete on an array of properties (uses OR statements)
+                // ->autocomplete('TacticsExampleBundle:Example', $term, array('your_property', 'your_property2', '...')
+            ;
+    
+            // index the result the way you need it in your form
+            $indexed = array();
+            foreach ($examples as $example) {
+                $indexed[$example->getId()] = (string) $example;
+            }
+    
+            return $indexed;
+        }
+    }
+    
+include '@TacticsFormBundle/Resources/public/js/tacticsform-autocomplete.js' in your template (needs chosen to work)
+    
+Some tweaks and extra stuff needed. But it works. Note: you'll need a DataTransformer for this to work. 
+But I heard someone say he was going to make a generic one, should be here any moment?
+
  Chosen
 --------
 
