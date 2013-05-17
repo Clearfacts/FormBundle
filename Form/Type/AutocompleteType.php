@@ -17,6 +17,7 @@ class AutocompleteType extends AbstractType
     {
         $view->vars['route'] = $options['route'];
         $view->vars['route_params'] = $options['route_params'];
+        $view->vars['method'] = $options['method'];
     }
 
     /**
@@ -28,10 +29,12 @@ class AutocompleteType extends AbstractType
             'route'
         ))
         ->setOptional(array(
-            'route_params'
+            'route_params',
+            ''
         ))
         ->setDefaults(array(
             'route_params' => array(),
+            'method' => null,
             'attr' => array(
                 'style' => 'display: none;'
             )

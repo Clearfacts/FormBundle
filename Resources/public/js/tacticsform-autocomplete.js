@@ -59,7 +59,9 @@ function autocomplete(select, searchBox) {
             clearOptions(select);
 
             if ($.isEmptyObject(json)) {
-                searchBox.parent().next('.chzn-results').append($('<li></li>').addClass('no-results').addClass('active-result').html('Nothing found for "'+term+'"'));
+                searchBox.parent().next('.chzn-results').find('.autocomplete_placeholder').removeClass('active-result');
+                searchBox.parent().next('.chzn-results').append($('<li></li>').addClass('no-results').html('Nothing found for "'+term+'"'));
+
                 return false;
             } else {
                 $.each(json, function(index, value) {

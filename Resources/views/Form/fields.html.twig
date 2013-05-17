@@ -150,7 +150,14 @@
     <div class="control-group autocomplete_div">
         <input type="text" id="{{ form.vars.id }}" name="{{ form.vars.full_name }}" value="{{ form.vars.value }}" {{ block('widget_attributes') }} />
         <select class="autocomplete_select" data-target="#{{ form.vars.id }}" data-route={{ route }}{% if route_params is not empty %} data-route-params="{{ route_params|json_encode }}"{% endif %}>
-            <option class="autocomplete_placeholder" value=""></option>
+            {% if ( form.vars.value ) %}
+                {% if (method) %}
+                    {% set option_value = attribute(form.parent.vars.data, method) %}
+                {% endif %}
+                <option class="autocomplete_placeholder" value="{{ form.vars.value }}">{{ method ? option_value : form.parent.vars.data }}</option>
+            {% else %}
+                <option class="autocomplete_placeholder" value=""></option>
+            {% endif %}
         </select>
     </div>
 {% endblock %}
