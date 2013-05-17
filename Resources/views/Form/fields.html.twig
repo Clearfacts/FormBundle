@@ -16,7 +16,7 @@
                     error.messagePluralization is null
                         ? error.messageTemplate|trans(error.messageParameters, 'validators')
                         : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
-                }}</li>                
+                }}</li>
             {% endfor %}
         {% endif %}
         {% for child in form %}
@@ -24,14 +24,14 @@
                 {% if (printed_start == false) %}
                     <div class="alert alert-error">
                         <button type="button" class="close" data-dismiss="alert">×</button>
-                        {{ 'form.errors'|trans({}, "TacticsFormBundle") }}                                        
+                        {{ 'form.errors'|trans({}, "TacticsFormBundle") }}
                         <ul>
                         {% set printed_start = true %}
                 {% endif %}
-                     
+
                 <li>
-                    {{ form_label(child)|striptags|trim|trim('*')|trim }}: 
-                    {{ 
+                    {{ form_label(child)|striptags|trim|trim('*')|trim }}:
+                    {{
                     error.messagePluralization is null
                         ? error.messageTemplate|trans(error.messageParameters, 'validators')
                         : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
@@ -145,3 +145,16 @@
     {% if render_required_asterisk %}*{% endif %}
 {% endif %}
 {% endblock label_asterisk %}
+
+{% block autocomplete_widget %}
+    <div class="control-group autocomplete_div">
+        <input type="text" id="{{ form.vars.id }}" name="{{ form.vars.full_name }}" value="{{ form.vars.value }}" {{ block('widget_attributes') }} />
+        <select class="autocomplete_select" data-target="#{{ form.vars.id }}" data-route={{ route }}{% if route_params is not empty %} data-route-params="{{ route_params|json_encode }}"{% endif %}>
+            {% if ( object ) %}
+                <option class="autocomplete_placeholder" value="{{ object.id }}">{{ method ? attribute(object, method) : object }}</option>
+            {% else %}
+                <option class="autocomplete_placeholder" value=""></option>
+            {% endif %}
+        </select>
+    </div>
+{% endblock %}
