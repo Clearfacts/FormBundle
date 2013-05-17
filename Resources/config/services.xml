@@ -49,6 +49,7 @@
             <tag name="form.type" alias="currency" />
         </service>
         <service id="form.type.autocomplete" class="Tactics\Bundle\FormBundle\Form\Type\AutocompleteType">
+            <argument type="service" id="doctrine.orm.entity_manager" />
             <tag name="form.type" alias="autocomplete" />
         </service>
         <service id="form.autocomplete.default_autocomplete" class="Tactics\Bundle\FormBundle\Autocomplete\DefaultAutocomplete">
