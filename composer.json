@@ -9,8 +9,8 @@
     "email": "joris@tactics.be"
   }],
   "require": {
-    "symfony/symfony": "2.1.*",
-    "mopa/bootstrap-bundle": "2.1.*"
+    "symfony/symfony": "2.3.*",
+    "mopa/bootstrap-bundle": "2.2.*"
   },
   "require-dev": {
     "sensio/framework-extra-bundle": "dev-master",
