@@ -61,7 +61,7 @@ function autocomplete(select, searchBox) {
             if ($.isEmptyObject(json)) {
                 searchBox.parent().next('.chzn-results').find('.autocomplete_placeholder').removeClass('active-result');
                 searchBox.parent().next('.chzn-results').append($('<li></li>').addClass('no-results').html('Nothing found for "'+term+'"'));
-
+                searchBox.val(term);
                 return false;
             } else {
                 $.each(json, function(index, value) {
@@ -72,6 +72,7 @@ function autocomplete(select, searchBox) {
                 });
 
                 triggerUpdate(select);
+                searchBox.val(term);
             }
         }
     });
