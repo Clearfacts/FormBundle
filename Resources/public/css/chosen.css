@@ -428,3 +428,8 @@
   }
 }
 /* @end */
+
+.chosen-drop {
+    width: auto !important;
+    white-space: nowrap;
+}
