@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
     });
 
     var typingTimer = null;
-    var searchBoxSelector = '.autocomplete_div > .chzn-container > .chzn-drop > .chzn-search > input';
+    var searchBoxSelector = '.autocomplete_div > .chosen-container > .chosen-drop > .chosen-search > input';
     $('body').on('keyup', searchBoxSelector, function() {
         var select = getSelectBox($(this));
         var searchBox = $(this);
@@ -59,8 +59,8 @@ function autocomplete(select, searchBox) {
             clearOptions(select);
 
             if ($.isEmptyObject(json)) {
-                searchBox.parent().next('.chzn-results').find('.autocomplete_placeholder').removeClass('active-result');
-                searchBox.parent().next('.chzn-results').append($('<li></li>').addClass('no-results').html('Nothing found for "'+term+'"'));
+                searchBox.parent().next('.chosen-results').find('.autocomplete_placeholder').removeClass('active-result');
+                searchBox.parent().next('.chosen-results').append($('<li></li>').addClass('no-results').html('Nothing found for "'+term+'"'));
                 searchBox.val(term);
                 return false;
             } else {
@@ -89,5 +89,5 @@ function clearOptions(select) {
 }
 
 function triggerUpdate(select) {
-    select.trigger('liszt:updated');
+    select.trigger('chosen:updated');
 }
