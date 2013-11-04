@@ -5,11 +5,11 @@ Twig
 ----
 
 Rendering form actions
-    
+
     {{ form_save_cancel() }}
 
 Will render as
-    
+
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">{{ "save"|trans|capitalize }}</button>
         <button type="button" class="btn cancelbutton">{{ "cancel"|trans|capitalize }}</button>
@@ -19,7 +19,7 @@ Types
 -----
 
 ### currency
-  
+
 Automatically sets choices to all available currencies. preferred choices are EUR and USD.
 
 ```$builder->add('currency', 'currency');```
@@ -46,7 +46,7 @@ Autocomplete
             )
         }
     }
-    
+
     class YourController extends TacticsController
     {
         /**
@@ -57,7 +57,7 @@ Autocomplete
         public function autocompleteAction()
         {
             $term = $this->getRequest()->query->get('term');
-    
+
             $examples = $this->get('default_autocomplete')
                 // if you're not using the default EntityManager, set it:
                 // ->setManager($this->getDoctrine()->getManager('your_manager')
@@ -65,32 +65,32 @@ Autocomplete
                 / or autocomplete on an array of properties (uses OR statements)
                 // ->autocomplete('TacticsExampleBundle:Example', $term, array('your_property', 'your_property2', '...')
             ;
-    
+
             // index the result the way you need it in your form
             $indexed = array();
             foreach ($examples as $example) {
                 $indexed[$example->getId()] = (string) $example;
             }
-    
+
             return $indexed;
         }
     }
-    
+
 include '@TacticsFormBundle/Resources/public/js/tacticsform-autocomplete.js' in your template (needs chosen to work)
-    
-Some tweaks and extra stuff needed. But it works. Note: you'll need a DataTransformer for this to work. 
+
+Some tweaks and extra stuff needed. But it works. Note: you'll need a DataTransformer for this to work.
 But I heard someone say he was going to make a generic one, should be here any moment?
 
  Chosen
 --------
 
   * Compact and large multiselect
-  * Allow Deselect on Single Selects 
+  * Allow Deselect on Single Selects
     (automatically enabled when required = false and the empty option has empty text)
 
 ### Options
  * Large (single item per line): add attribute "data-chosen-class" => "large
- * Ajax autocomplete: add attribute 'data-chosen-ajax-url' 
+ * Ajax autocomplete: add attribute 'data-chosen-ajax-url'
 
 ### Full Example
     @TacticsFormBundle/Resources/public/css/chosen.css
@@ -107,7 +107,7 @@ But I heard someone say he was going to make a generic one, should be here any m
             'class' => 'chosen',
             'data-chosen-class' => 'large'
         )
-    )); 
+    ));
 
     // Ajax example
     $builder->add('persoon', 'model', array(
@@ -115,7 +115,7 @@ But I heard someone say he was going to make a generic one, should be here any m
         'property' => 'naam',
         'required' => false,
         'attr' => array(
-            'class' => 'chosen', 
+            'class' => 'chosen',
             'data-chosen-ajax-url' => $this->router->generate('persoon_autocomplete')
          )
     ));
@@ -162,8 +162,8 @@ But I heard someone say he was going to make a generic one, should be here any m
     $builder->add('birthdate', 'tactics_date');
     $builder->add('hour_open', 'tactics_time');
 
-    {% javascripts 
-        '@TacticsFormBundle/Resources/public/js/jquery.maskedinput-1.3.min.js'
+    {% javascripts
+        '@TacticsFormBundle/Resources/public/js/jquery.maskedinput.min.js'
         '@TacticsFormBundle/Resources/public/js/jquery-ui-1.8.22.custom.min.js'
         '@TacticsFormBundle/Resources/public/js/tacticsform-masked-input.js'
         '@TacticsFormBundle/Resources/public/js/tacticsform-datum-input.js'
@@ -174,14 +174,14 @@ But I heard someone say he was going to make a generic one, should be here any m
 
     {% stylesheets
         admin bundle includes this one by default:
-        '@TacticsFormBundle/Resources/public/css/base.css' 
+        '@TacticsFormBundle/Resources/public/css/base.css'
 
         time and datetime only:
-        '@TacticsFormBundle/Resources/public/css/jquery.ui.timepicker.css' 
+        '@TacticsFormBundle/Resources/public/css/jquery.ui.timepicker.css'
     %}
 
 time- and datepicker fields trigger following events.
-    
+
     jQuery('#tactics-date-field').on('datepicker.select', function() {
 
     });
@@ -203,18 +203,18 @@ Below: Stuff to remove from docs?
 
 Polyfill fields:
   So far javascripts have been added to emulate the behavior of an html 5 number field type in older browsers
-  If you want to use a numberfield , add a formfield in your typeClass with fieldtype = integer 
+  If you want to use a numberfield , add a formfield in your typeClass with fieldtype = integer
   and include following lines in your template:
     {% block stylesheets %}
       {{ parent() }}
-      
+
         {% stylesheets
             '@TacticsFormBundle/Resources/public/css/chosen.css'
         %}
-    
+
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet">
-        
-        {% endstylesheets %}  
+
+        {% endstylesheets %}
     {% endblock %}
 
     and import following javascripts :
