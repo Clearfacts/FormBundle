@@ -150,3 +150,13 @@ select.form-control + .chosen-container-multi .chosen-results li.result-selected
     cursor: default;
     background-color: white;
 }
+
+div.has-error div[class*='col-'] div.chosen-container a.chosen-default {
+    color: #B94A48;
+    border-color: #B94A48;
+}
+
+div.has-error div[class*='col-'] div.chosen-container.chosen-container-active a.chosen-default {
+    border-color: #953B39;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #D59392;
+}
