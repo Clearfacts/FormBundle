@@ -1,28 +1,30 @@
 jQuery(document).ready(function($) {
-  
+
     // --- date picker ---
-  
+
     // create date picker(s)
-    $('.datepicker, .tactics_datetime > div > input').datepicker({
-        buttonText: '<i class="icon-calendar"></i>',
-        changeMonth: true,
-        changeYear: true,
-        dateFormat: 'dd/mm/yy',
-        showButtonPanel: true,
-        showOn: 'button',
-        onSelect: function(){
-            $(this).trigger('datepicker.select');
-        },
-        onClose: function(){
-            $(this).trigger('datepicker.close');
-        }
-    })
-    // disable tab select
-    .next('button.ui-datepicker-trigger')
-      .attr("tabIndex", "-1")
-    ;
-    
-    
+    $('.datepicker').each(function() {
+        $(this).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd/mm/yy',
+            showOn: 'button',
+            buttonText: '<i class="fa fa-calendar-o"></i>',
+            showButtonPanel: true,
+            onSelect: function(){
+                $(this).trigger('datepicker.select');
+            },
+            onClose: function(){
+                $(this).trigger('datepicker.close');
+            }
+        });
+
+        $(this).next('.ui-datepicker-trigger')
+            .addClass('btn btn-default')
+            .wrap('<span class="input-group-btn">')
+        ;
+    });
+
     // --- time picker ---
 
     // for each time input field
@@ -36,11 +38,11 @@ jQuery(document).ready(function($) {
 
         // attach timepicker button to time field, the bootstrap way
         replacement.wrap('<div class="input-append">');
-        replacement.after('<button class="btn ui-timepicker-trigger" type="button" tabindex="-1"><i class="icon-time"></i></button>');
-        
+        replacement.after('<button class="btn ui-timepicker-trigger" type="button" tabindex="-1"><i class="fa fa-clock-time"></i></button>');
+
         // fetch reference to the button
         var btn = replacement.next('button');
-        
+
         // create time picker
         replacement.timepicker({
             showOn: 'button',
@@ -56,5 +58,5 @@ jQuery(document).ready(function($) {
             }
         });
     })
-    
+
 });

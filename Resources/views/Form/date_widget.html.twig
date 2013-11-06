@@ -1,9 +1,10 @@
 {% block date_widget %}
     {% spaceless %}
         {% if widget == 'single_text' %}
+            {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control'}) %}
             {% set type = type|default('text') %}
             {% if type != 'hidden' and widget_addon.type|default(null) is not null %}
-                <div class="input-{{ widget_addon.type }}">
+                <div class="input-group">
                 {% if widget_addon.type == 'prepend' %}
                     {{ block('widget_addon') }}
                 {% endif %}
@@ -16,9 +17,7 @@
                 {% set attr = attr|merge({'masked-input-mask': masked_input.mask}) %}
                 {% set attr = attr|merge({'masked-input-placeholder': masked_input.placeholder}) %}
             {% endif %}
-            <div class="input-append">
-                <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}"{% endif %} data-date-format="dd/mm/yyyy" />
-            </div>
+            <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}"{% endif %} data-date-format="dd/mm/yyyy" />
             {% if help_tooltip|default(false) %}
                 &nbsp;<a href="#" class="btn help-popover" rel="popover" title="{{ help_tooltip }}"><i class="icon-question-sign"></i></a>
             {% endif %}

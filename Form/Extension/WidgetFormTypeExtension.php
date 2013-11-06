@@ -14,7 +14,6 @@ use Symfony\Component\Form\Exception\CreationException;
  */
 class WidgetFormTypeExtension extends AbstractTypeExtension
 {
-
     /**
      * {@inheritDoc}
      */

@@ -1,0 +1,15 @@
+{% block tactics_date_widget %}
+    {% set type = type|default('text') %}
+    {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control datepicker'}) %}
+    {% if not widget_remove_btn|default(null) %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' not-removable'}) %}
+    {% endif %}
+    {% if masked_input|default(false) %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' masked-input'}) %}
+        {% set attr = attr|merge({'masked-input-mask': masked_input.mask}) %}
+        {% set attr = attr|merge({'masked-input-placeholder': masked_input.placeholder}) %}
+    {% endif %}
+    <div class="input-group">
+        <input type="{{ type }}" {{ block('widget_attributes') }} data-date-format="{{ format }}" {% if value is not empty %}value="{{ value }}"{% endif %}/>
+    </div>
+{% endblock %}
