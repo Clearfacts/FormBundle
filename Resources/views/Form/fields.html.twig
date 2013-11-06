@@ -1,13 +1,18 @@
 {% extends 'form_div_layout.html.twig' %}
 
-{% use 'TacticsFormBundle:Form:form_row.html.twig' %}
+{% use 'TacticsFormBundle:Form:form_errors.html.twig' %}
 {% use 'TacticsFormBundle:Form:form_label.html.twig' %}
+{% use 'TacticsFormBundle:Form:label_asterisk.html.twig' %}
+{% use 'TacticsFormBundle:Form:form_legend.html.twig' %}
+{% use 'TacticsFormBundle:Form:form_row.html.twig' %}
 {% use 'TacticsFormBundle:Form:form_widget_simple.html.twig' %}
 {% use 'TacticsFormBundle:Form:form_widget_compound.html.twig' %}
+
+{% use 'TacticsFormBundle:Form:autocomplete_widget.html.twig' %}
 {% use 'TacticsFormBundle:Form:choice_widget_expanded.html.twig' %}
 {% use 'TacticsFormBundle:Form:choice_widget_collapsed.html.twig' %}
-{% use 'TacticsFormBundle:Form:form_errors.html.twig' %}
-{% use 'TacticsFormBundle:Form:form_date_widget.html.twig' %}
-{% use 'TacticsFormBundle:Form:form_legend.html.twig' %}
-{% use 'TacticsFormBundle:Form:label_asterisk.html.twig' %}
-{% use 'TacticsFormBundle:Form:autocomplete_widget.html.twig' %}
+{% use 'TacticsFormBundle:Form:date_widget.html.twig' %}
+{% use 'TacticsFormBundle:Form:money_widget.html.twig' %}
+{% use 'TacticsFormBundle:Form:textarea_widget.html.twig' %}
+
+{% use 'TacticsFormBundle:Form:widget_addon.html.twig' %}

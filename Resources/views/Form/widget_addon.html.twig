@@ -1,0 +1,5 @@
+{% block widget_addon %}
+    {% spaceless %}
+        <span class="input-group-addon">{{ widget_addon.text|trans({}, translation_domain)  }}</span>
+    {% endspaceless %}
+{% endblock widget_addon %}

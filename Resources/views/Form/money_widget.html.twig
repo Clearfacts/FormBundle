@@ -1,0 +1,6 @@
+{% block money_widget %}
+    {% spaceless %}
+        {% set widget_addon = widget_addon|merge( {'text': money_pattern|replace({ '{{ widget }}': ''}) }) %}
+        {{ block('form_widget_simple') }}
+    {% endspaceless %}
+{% endblock money_widget %}
