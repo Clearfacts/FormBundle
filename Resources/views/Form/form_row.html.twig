@@ -1,0 +1,63 @@
+{% block form_row %}
+    {% spaceless %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ (errors|length > 0 ? ' error' : '') }) %}
+        {{ block('widget_form_group_start') }}
+        {{ widget_prefix|raw }} {{ form_widget(form, _context) }} {{ widget_suffix|raw }}
+        {% if widget_remove_btn is defined %}
+            {{ block('form_widget_remove_btn') }}
+        {% endif -%}
+        {{ block('form_message') }}
+        {{ block('widget_form_group_end') }}
+    {% endspaceless %}
+{% endblock form_row %}
+
+{% block widget_form_group_start %}
+    {% spaceless %}
+        {% if widget_control_group|default(false) or form.parent == null %}
+            {% if prototype is defined %}
+                {% set data_prototype = 'collection' in form.vars.block_prefixes and not omit_collection_item ? '<div class="collection-item">' ~ form_row(prototype) ~ '</div>' : form_row(prototype) %}
+                {% set widget_control_group_attr = widget_control_group_attr|merge({'data-prototype': data_prototype}) %}
+            {% endif %}
+            {% set widget_control_group_attr = widget_control_group_attr|merge({'id': id ~ '_form_group', 'class': widget_control_group_attr.class|default('') ~ ' form-group'}) %}
+            {% if errors|length > 0 %}
+                {% set widget_control_group_attr = widget_control_group_attr|merge({'class': widget_control_group_attr.class|default('') ~ ' error'}) %}
+            {% endif %}
+            {% if 'collection' in form.vars.block_prefixes and attr.class is defined %}
+                {% set widget_control_group_attr = widget_control_group_attr|merge({'class': widget_control_group_attr.class|default('') ~ ' ' ~ attr.class}) %}
+            {% endif %}
+            <div {% for attrname,attrvalue in widget_control_group_attr %} {{attrname}}="{{attrvalue}}"{% endfor %}>
+            {# a form item containing the field in block_prefixes is a near subform or a field directly #}
+            {% if (form|length > 0 and form.parent != null)
+            and 'field' not in form.vars.block_prefixes %}
+                {% if show_child_legend%}
+                    {{ block('form_legend') }}
+                {% elseif label_render %}
+                    {{ form_label(form, label|default(null)) }}
+                {% endif %}
+            {% else %}
+                {% if label_render %}
+                    {{ form_label(form, label|default(null)) }}
+                {% endif %}
+            {% endif %}
+            {% if widget_controls|default(false) or form.parent == null %}
+                {% set widget_controls_attr = widget_controls_attr|merge({'class': widget_controls_attr.class|default('') ~ ' ' ~ widget_class}) %}
+                <div {% for attrname,attrvalue in widget_controls_attr %}{{attrname}}="{{attrvalue}}" {% endfor %}>
+            {% endif %}
+        {% else %}
+            {% if label_render %}
+                {{ form_label(form, label|default(null)) }}
+            {% endif %}
+        {% endif %}
+    {% endspaceless %}
+{% endblock widget_form_group_start %}
+
+{% block widget_form_group_end %}
+    {% spaceless %}
+        {% if widget_control_group|default(false) or form.parent == null %}
+            {% if widget_controls|default(false) or form.parent == null %}
+                </div>
+            {% endif %}
+            </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock widget_form_group_end %}

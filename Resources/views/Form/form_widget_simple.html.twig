@@ -1,6 +1,7 @@
 {% block form_widget_simple %}
     {% spaceless %}
         {% set type = type|default('text') %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control'}) %}
         {% if type != 'hidden' and widget_addon.type|default(null) is not null %}
             <div class="input-{{ widget_addon.type }}">
             {% if widget_addon.type == 'prepend' %}

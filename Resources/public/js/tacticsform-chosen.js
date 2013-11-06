@@ -9,7 +9,10 @@
         // Enable chosen on every select list selected
         elements.each(function()
         {
-            var options = {disable_search_threshold: 5};
+            var options = {
+                disable_search_threshold: 5,
+                width: '100%'
+            };
             var $this = $(this);
 
             // enable 'x' on input to remove selected value when single select
