@@ -1,46 +1,22 @@
 {% block form_errors %}
-    {% spaceless %}
-        {% set printed_start = false %}
-        {% if form.vars.errors %}
-            {% for error in form.vars.errors %}
-                {% if (printed_start == false) %}
-                    <div class="alert alert-error">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    {{ 'form.errors'|trans({}, "TacticsFormBundle") }}
-                    <ul>
-                    {% set printed_start = true %}
-                {% endif %}
-                <li>{{
-                    error.messagePluralization is null
-                    ? error.messageTemplate|trans(error.messageParameters, 'validators')
-                    : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
-                    }}</li>
-            {% endfor %}
+    {% if errors|length > 0 %}
+        {% if not form.parent %}
+            <div class="alert alert-danger">
+                {{ 'form.errors'|trans({}, "TacticsFormBundle") }}
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {% else %}
+            <span class="help-block">
         {% endif %}
-        {% for child in form %}
-            {% for error in child.vars.errors %}
-                {% if (printed_start == false) %}
-                    <div class="alert alert-error">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    {{ 'form.errors'|trans({}, "TacticsFormBundle") }}
-                    <ul>
-                    {% set printed_start = true %}
-                {% endif %}
-
-                <li>
-                    {{ form_label(child)|striptags|trim|trim('*')|trim }}:
-                    {{
-                    error.messagePluralization is null
-                    ? error.messageTemplate|trans(error.messageParameters, 'validators')
-                    : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
-                    }}
-                </li>
-
-            {% endfor %}
-            {% if (printed_start and loop.last) %}
-                </ul>
-                </div>
-            {% endif %}
+        {% if errors|length > 1 %}<ul>{% endif %}
+        {% for error in errors %}
+            {% if errors|length > 1 %}<li>{% endif %}
+            {{ error.messagePluralization is null
+                ? error.messageTemplate|trans(error.messageParameters, 'validators')
+                : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
+            }}
+            {% if errors|length > 1 %}</li>{% endif %}
         {% endfor %}
-    {% endspaceless %}
+        {% if errors|length > 1 %}</ul>{% endif %}
+        {% if not form.parent %}</div>{% else %}</span>{% endif %}
+    {% endif %}
 {% endblock form_errors %}
