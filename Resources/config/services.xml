@@ -8,7 +8,7 @@
         <!-- Twig Extensions -->
         <service id="tactics.twig.form_extension" class="Tactics\Bundle\FormBundle\Twig\FormExtension">
             <tag name="twig.extension" />
-            <argument type="service" id="service_container" />
+            <argument type="service" id="twig" />
         </service>
 
         <!-- Form Extensions -->
@@ -38,6 +38,7 @@
         <service id="form.type.colorselect" class="Tactics\Bundle\FormBundle\Form\Type\ColorSelectType">
             <tag name="form.type" alias="colorselect" />
         </service>
+
         <!-- datum type is deprecated in favor of tactics_date -->
         <service id="form.type.datum" class="Tactics\Bundle\FormBundle\Form\Type\DatumType">
             <tag name="form.type" alias="datum" />
@@ -47,9 +48,6 @@
         </service>
         <service id="form.type.tactics_time" class="Tactics\Bundle\FormBundle\Form\Type\TimeType">
             <tag name="form.type" alias="tactics_time" />
-        </service>
-        <service id="form.type.datetime" class="Tactics\Bundle\FormBundle\Form\Type\FixedDateTimeType">
-            <tag name="form.type" alias="datetime" />
         </service>
         <service id="form.type.tactics_datetime" class="Tactics\Bundle\FormBundle\Form\Type\DateTimeType">
             <tag name="form.type" alias="tactics_datetime" />

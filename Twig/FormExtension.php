@@ -2,21 +2,19 @@
 
 namespace Tactics\Bundle\FormBundle\Twig;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 class FormExtension extends \Twig_Extension
 {
-   /**
-    * @var Symfony\Component\DependencyInjection\ContainerInterface
-    */
-    protected $container;
+    /**
+     * @var \Twig_Environment
+     */
+    protected $twig;
 
     /**
      * Constructor
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(\Twig_Environment $twig)
     {
-        $this->container = $container;
+        $this->twig = $twig;
     }
 
     /**
@@ -25,11 +23,7 @@ class FormExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'form_save_cancel' => new \Twig_Function_Method(
-                $this,
-                'renderButtons',
-                array('is_safe' => array('html'))
-            )
+            'form_save_cancel' => new \Twig_Function_Method($this, 'renderButtons', array('is_safe' => array('html')))
         );
     }
 
@@ -38,7 +32,7 @@ class FormExtension extends \Twig_Extension
      */
     public function renderButtons()
     {
-        return $this->container->get('templating')->render('TacticsFormBundle:Extension:buttons.html.twig');
+        return $this->twig->render('TacticsFormBundle:Extension:buttons.html.twig');
     }
 
     /**

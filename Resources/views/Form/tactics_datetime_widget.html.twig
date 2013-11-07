@@ -1,0 +1,44 @@
+{% block tactics_datetime_widget %}
+    {% set type = type|default('text') %}
+    {% set dateAttr = form.date.vars.attr|merge({'class': form.date.vars.attr.class|default('') ~ ' form-control datepicker'}) %}
+    {% set timeAttr = form.time.vars.attr|merge({'class': form.time.vars.attr.class|default('') ~ ' form-control timepicker'}) %}
+    {% if date_options.masked_input|default(null) is not null %}
+        {% set dateAttr = dateAttr|merge({'class': dateAttr.class|default('') ~ ' masked-input'}) %}
+        {% set dateAttr = dateAttr|merge({'masked-input-mask': date_options.masked_input.mask}) %}
+        {% set dateAttr = dateAttr|merge({'masked-input-placeholder': date_options.masked_input.placeholder}) %}
+    {% endif %}
+    {% if time_options.masked_input|default(null) is not null %}
+        {% set timeAttr = timeAttr|merge({'class': timeAttr.class|default('') ~ ' masked-input'}) %}
+        {% set timeAttr = timeAttr|merge({'masked-input-mask': time_options.masked_input.mask}) %}
+        {% set timeAttr = timeAttr|merge({'masked-input-placeholder': time_options.masked_input.placeholder}) %}
+    {% endif %}
+    {% if not widget_remove_btn|default(null) %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' not-removable'}) %}
+    {% endif %}
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div class="input-group">
+            <input type="{{ type }}" {{ block('datetime_date_widget_attributes') }} data-date-format="{{ date_options.format }}" {% if form.date.vars.value is not empty %}value="{{ form.date.vars.value }}"{% endif %} />
+        </div>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div class="input-group">
+            <input type="{{ type }}" {{ block('datetime_time_widget_attributes') }} {% if form.time.vars.value is not empty %}value="{{ form.time.vars.value }}" />{% endif %}
+        </div>
+    </div>
+{% endblock tactics_datetime_widget %}
+
+{% block datetime_date_widget_attributes %}
+    {% set dateVars = form.date.vars %}
+    {% spaceless %}
+        id="{{ dateVars.id }}" name="{{ dateVars.full_name }}"{% if dateVars.read_only %} readonly="readonly"{% endif %}{% if dateVars.disabled %} disabled="disabled"{% endif %}{% if dateVars.required %} required="required"{% endif %}{% if dateVars.max_length %} maxlength="{{ dateVars.max_length }}"{% endif %}{% if dateVars.pattern %} pattern="{{ dateVars.pattern }}"{% endif %}
+        {% for attrname, attrvalue in dateAttr %}{% if attrname in ['placeholder', 'title'] %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}
+    {% endspaceless %}
+{% endblock datetime_date_widget_attributes %}
+
+{% block datetime_time_widget_attributes %}
+    {% set timeVars = form.time.vars %}
+    {% spaceless %}
+        id="{{ timeVars.id }}" name="{{ timeVars.full_name }}"{% if timeVars.read_only %} readonly="readonly"{% endif %}{% if timeVars.disabled %} disabled="disabled"{% endif %}{% if timeVars.required %} required="required"{% endif %}{% if timeVars.max_length %} maxlength="{{ timeVars.max_length }}"{% endif %}{% if timeVars.pattern %} pattern="{{ timeVars.pattern }}"{% endif %}
+        {% for attrname, attrvalue in timeAttr %}{% if attrname in ['placeholder', 'title'] %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}
+    {% endspaceless %}
+{% endblock datetime_time_widget_attributes %}
