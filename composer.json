@@ -9,11 +9,7 @@
     "email": "joris@tactics.be"
   }],
   "require": {
-    "symfony/symfony": "2.1.*"
-  },
-  "require-dev": {
-    "sensio/framework-extra-bundle": "dev-master",
-    "fzaninotto/faker": "dev-master"
+    "symfony/symfony": "~2.1"
   },
   "autoload": {
     "psr-0": { "Tactics\\Bundle\\FormBundle": "" }
