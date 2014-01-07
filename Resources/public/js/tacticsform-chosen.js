@@ -11,6 +11,7 @@
         {
             var options = {
                 disable_search_threshold: 5,
+                width: '100%'
             };
             var $this = $(this);
 
