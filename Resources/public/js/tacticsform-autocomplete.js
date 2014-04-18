@@ -48,8 +48,13 @@ function getSelectBox(current) {
 function autocomplete(select, searchBox) {
     var term = searchBox.val();
 
+    var url =  Routing.generate(select.attr('data-route'));
+    if(select.attr('data-route-params')) {
+        url = Routing.generate(select.attr('data-route'), $.parseJSON(select.attr('data-route-params')));
+    }
+
     $.ajax({
-        url: Routing.generate(select.attr('data-route'), $.parseJSON(select.attr('data-route-params'))),
+        url: url,
         data: {
             term: term
         },
