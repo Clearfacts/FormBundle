@@ -5,6 +5,7 @@ use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class MaskedDateTypeExtension extends AbstractTypeExtension
 {
@@ -41,18 +42,15 @@ class MaskedDateTypeExtension extends AbstractTypeExtension
     }
 
     /**
-     * Overrides the default options form the extended type.
-     *
-     * @param array $options
-     *
-     * @return array
+     * @inheritDoc
      */
-    public function getDefaultOptions()
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
+        $resolver->setDefaults(array(
             'masked_input' => null,
-            'format'       => 'dd/MM/yyyy'
-        );
+            'format'       => 'dd/MM/yyyy',
+        ));
+
     }
 
     /**
