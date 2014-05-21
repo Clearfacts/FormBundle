@@ -6,7 +6,12 @@ jQuery(document).ready(function($) {
 
     var typingTimer = null;
     var searchBoxSelector = '.autocomplete_div > .chosen-container > .chosen-drop > .chosen-search > input';
-    $('body').on('keyup', searchBoxSelector, function() {
+    $('body').on('keyup', searchBoxSelector, function(e) {
+
+        if (guardAllowedKeys(e.keyCode)) {
+            return;
+        }
+
         var select = getSelectBox($(this));
         var searchBox = $(this);
 
@@ -20,7 +25,12 @@ jQuery(document).ready(function($) {
             }, 1000);
         }
     })
-    .on('keydown', searchBoxSelector, function() {
+    .on('keydown', searchBoxSelector, function(e) {
+
+        if (guardAllowedKeys(e.keyCode)) {
+            return;
+        }
+
         var select = getSelectBox($(this));
 
         if (! $(this).val()) {
@@ -38,6 +48,19 @@ jQuery(document).ready(function($) {
         target.val(select.val());
     });
 });
+
+/**
+ * There is still a problem with right- and left-arrow clearing selection.
+ */
+function guardAllowedKeys(keyCode) {
+    var ignoreKeyMap = {
+        38: 'up-arrow',
+        40: 'down-arrow',
+        13: 'enter',
+    };
+
+    return ignoreKeyMap.hasOwnProperty(keyCode);
+}
 
 function getSelectBox(current) {
     return current.closest('.autocomplete_div')
