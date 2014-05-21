@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
 
     var typingTimer = null;
     var searchBoxSelector = '.autocomplete_div > .chzn-container > .chzn-drop > .chzn-search > input';
-    $('body').on('keyup', searchBoxSelector, function() {
+    $('body').on('keyup', searchBoxSelector, function(e) {
 
         if (guardAllowedKeys(e.keyCode)) {
             return;
