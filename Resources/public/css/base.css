@@ -44,3 +44,13 @@ div.input-append [class*=" icon-"] {
     margin: 3px 5px 3px 5px;
 }
 
+
+/* don't appply margins on nested form-groups */
+.form-group .form-group {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.form-group .form-group:last-of-type {
+    margin-bottom: 0px;
+}

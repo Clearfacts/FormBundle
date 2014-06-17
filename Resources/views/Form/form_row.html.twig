@@ -39,8 +39,10 @@
                 {% endif %}
             {% endif %}
             {% if widget_controls|default(false) or form.parent == null %}
-                {% set widget_controls_attr = widget_controls_attr|merge({'class': widget_controls_attr.class|default('') ~ ' ' ~ widget_class}) %}
-                <div {% for attrname,attrvalue in widget_controls_attr %}{{attrname}}="{{attrvalue}}" {% endfor %}>
+                {% if not form.children %}
+                    {% set widget_controls_attr = widget_controls_attr|merge({'class': widget_controls_attr.class|default('') ~ ' ' ~ widget_class}) %}
+                    <div {% for attrname,attrvalue in widget_controls_attr %}{{attrname}}="{{attrvalue}}" {% endfor %}>
+                {% endif %}
             {% endif %}
         {% else %}
             {% if label_render %}
@@ -55,7 +57,9 @@
         {% if widget_control_group|default(false) or form.parent == null %}
             {% if widget_controls|default(false) or form.parent == null %}
                 {{ block('form_errors') }}
-                </div>
+                {% if not form.children %}
+                    </div>
+                {% endif %}
             {% endif %}
             </div>
         {% endif %}
