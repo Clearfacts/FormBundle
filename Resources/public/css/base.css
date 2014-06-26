@@ -9,29 +9,26 @@
 
 /* Date / Time types */
 
+.tactics-datetime-group .input-group-btn {
+    display: block;
+}
+
 input.datepicker,
 div.tactics_datetime div input:not([type="time"])
 {
-    width: 67px;
+    width: auto !important;
 }
 
 input.timepicker,
 div.tactics_datetime input[type="time"],
 input.time-input
 {
-    width: 35px !important;
+    width: auto !important;
 }
 
 div.input-append [class^="icon-"],
 div.input-append [class*=" icon-"] {
     height: auto !important;
-}
-
-.btn.ui-timepicker-trigger,
-.btn.ui-datepicker-trigger
-{
-    padding: 4px 6px;
-    height: 24px;
 }
 
 /* Chosen */

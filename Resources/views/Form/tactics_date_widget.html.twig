@@ -9,7 +9,7 @@
         {% set attr = attr|merge({'masked-input-mask': masked_input.mask}) %}
         {% set attr = attr|merge({'masked-input-placeholder': masked_input.placeholder}) %}
     {% endif %}
-    <div class="input-group">
+    <div class="input-group tactics-datetime-group">
         <input type="{{ type }}" {{ block('widget_attributes') }} data-date-format="{{ format }}" {% if value is not empty %}value="{{ value }}"{% endif %}/>
     </div>
 {% endblock tactics_date_widget %}

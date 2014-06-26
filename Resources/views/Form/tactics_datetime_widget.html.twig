@@ -15,14 +15,16 @@
     {% if not widget_remove_btn|default(null) %}
         {% set attr = attr|merge({'class': attr.class|default('') ~ ' not-removable'}) %}
     {% endif %}
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <div class="input-group">
-            <input type="{{ type }}" {{ block('datetime_date_widget_attributes') }} data-date-format="{{ date_options.format }}" {% if form.date.vars.value is not empty %}value="{{ form.date.vars.value }}"{% endif %} />
+    <div class="form-group tactics-datetime-group">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="input-group">
+                <input type="{{ type }}" {{ block('datetime_date_widget_attributes') }} data-date-format="{{ date_options.format }}" {% if form.date.vars.value is not empty %}value="{{ form.date.vars.value }}"{% endif %} size="10" />
+            </div>
         </div>
-    </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <div class="input-group">
-            <input type="{{ type }}" {{ block('datetime_time_widget_attributes') }} {% if form.time.vars.value is not empty %}value="{{ form.time.vars.value }}" />{% endif %}
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="input-group">
+                <input type="{{ type }}" {{ block('datetime_time_widget_attributes') }} {% if form.time.vars.value is not empty %}value="{{ form.time.vars.value }}"{% endif %} size="5" />
+            </div>
         </div>
     </div>
 {% endblock tactics_datetime_widget %}
