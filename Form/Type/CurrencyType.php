@@ -3,6 +3,7 @@ namespace Tactics\Bundle\FormBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Tactics\Bundle\FormBundle\Form\Extension\ChoiceList\CurrencyChoiceList;
 
 class CurrencyType extends AbstractType
@@ -10,12 +11,12 @@ class CurrencyType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getDefaultOptions(array $options)
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
+        $resolver->setDefaults(array(
             'choices' => $this->getChoices(),
             'preferred_choices' => $this->getPreferredChoices(),
-        );
+        ));
     }
 
     /**

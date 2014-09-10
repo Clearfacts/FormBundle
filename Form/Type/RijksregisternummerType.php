@@ -3,17 +3,18 @@ namespace Tactics\Bundle\FormBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class RijksregisternummerType extends AbstractType
 {
-    public function getDefaultOptions(array $options)
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
+        $resolver->setDefaults(array(
             'masked_input' => array(
                 'mask' => '99.99.99-999.99',
                 'placeholder' => ' ',
             ),
-        );
+        ));
     }
 
     public function getParent()
