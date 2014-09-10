@@ -10,10 +10,7 @@
         {% if errors|length > 1 %}<ul>{% endif %}
         {% for error in errors %}
             {% if errors|length > 1 %}<li>{% endif %}
-            {{ error.messagePluralization is null
-                ? error.messageTemplate|trans(error.messageParameters, 'validators')
-                : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
-            }}
+            {{ error.message }}
             {% if errors|length > 1 %}</li>{% endif %}
         {% endfor %}
         {% if errors|length > 1 %}</ul>{% endif %}
