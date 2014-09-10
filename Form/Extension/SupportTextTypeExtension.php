@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class SupportTextTypeExtension extends AbstractTypeExtension
 {
@@ -28,13 +29,13 @@ class SupportTextTypeExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function getDefaultOptions() 
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
+        $resolver->setDefaults(array(
             'support_text' => null,
-        );
+        ));
     }
-    
+
     /**
      * {@inheritdoc}
      */

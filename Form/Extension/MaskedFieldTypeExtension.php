@@ -5,6 +5,7 @@ use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class MaskedFieldTypeExtension extends AbstractTypeExtension
 {
@@ -41,17 +42,13 @@ class MaskedFieldTypeExtension extends AbstractTypeExtension
     }
 
     /**
-     * Overrides the default options form the extended type.
-     *
-     * @param array $options
-     *
-     * @return array
+     * @param OptionsResolverInterface $resolver
      */
-    public function getDefaultOptions()
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
+        $resolver->setDefaults(array(
             'masked_input' => null,
-        );
+        ));
     }
     
     /**

@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class HelpTooltipTypeExtension extends AbstractTypeExtension
 {
@@ -28,11 +29,11 @@ class HelpTooltipTypeExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function getDefaultOptions() 
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
+        $resolver->setDefaults(array(
             'help_tooltip' => null,
-        );
+        ));
     }
     
     /**
