@@ -22,7 +22,7 @@ class HelpTooltipTypeExtension extends AbstractTypeExtension
      */
     public function buildView(FormView $view, FormInterface $form, array $options) 
     {
-        $view->set('help_tooltip', $form->getAttribute('help_tooltip'));
+        $view->vars['help_tooltip'] = $form->getAttribute('help_tooltip');
     }
     
     /**

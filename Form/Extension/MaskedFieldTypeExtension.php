@@ -37,7 +37,7 @@ class MaskedFieldTypeExtension extends AbstractTypeExtension
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->set('masked_input', $form->getAttribute('masked_input'));
+        $view['masked_input'] = $form->getAttribute('masked_input');
     }
 
     /**
