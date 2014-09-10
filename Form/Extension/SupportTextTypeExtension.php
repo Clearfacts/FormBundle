@@ -22,7 +22,7 @@ class SupportTextTypeExtension extends AbstractTypeExtension
      */
     public function buildView(FormView $view, FormInterface $form, array $options) 
     {
-        $view->vars['support_text'] = $form->getAttribute('support_text');
+        $view->vars['support_text'] = $form->getConfig()->getAttribute('support_text');
     }
     
     /**
