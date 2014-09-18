@@ -57,6 +57,7 @@ class AutocompleteType extends AbstractType
         ))
         ->setDefaults(array(
             'route_params' => array(),
+            'to_string_method' => null,
             'attr' => array(
                 'style' => 'display: none;'
             )
