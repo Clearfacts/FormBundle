@@ -39,7 +39,7 @@ class AutocompleteType extends AbstractType
         $view->vars['object'] = $repo->find($view->vars['value']);
         $view->vars['route'] = $options['route'];
         $view->vars['route_params'] = $options['route_params'];
-        $view->vars['method'] = $options['method'];
+        $view->vars['to_string_method'] = $options['to_string_method'];
     }
 
     /**
@@ -53,10 +53,10 @@ class AutocompleteType extends AbstractType
         ))
         ->setOptional(array(
             'route_params',
+            'to_string_method'
         ))
         ->setDefaults(array(
             'route_params' => array(),
-            'method' => null,
             'attr' => array(
                 'style' => 'display: none;'
             )
