@@ -39,12 +39,13 @@ class DateTimeType extends AbstractType
                 ),
                 'format' => 'dd/MM/yyyy'
             ),
+            'show_child_legend' => false,
             'time_options' => array(
                 'masked_input' => array(
                     'mask' => '99:99',
                     'placeholder' => ' ',
                 )
-            )
+            ),
         ));
     }
 
