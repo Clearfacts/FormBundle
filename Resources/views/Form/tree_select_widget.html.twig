@@ -1,0 +1,16 @@
+{% block tree_select_widget %}
+
+    <div
+        class="tree-select-container"
+        data-selected="{{ form.vars.selected|join(',') }}"
+        data-opened="{{ form.vars.opened|join(',') }}"
+        data-url="{{ form.vars.url }}"
+        data-id="{{ form.vars.id }}"
+        data-name="{{ form.vars.name }}"
+        data-multiple-select="{{ form.vars.multiple }}"
+    >
+
+    </div>
+
+
+{% endblock %}
