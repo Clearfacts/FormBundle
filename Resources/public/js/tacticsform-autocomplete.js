@@ -91,6 +91,7 @@ function autocomplete(select, searchBox) {
                 searchBox.parent().next('.chosen-results').append($('<li></li>').addClass('no-results').html('Nothing found for "'+term+'"'));
                 searchBox.val(term);
                 select.trigger("change");
+                triggerUpdate(select);
                 return false;
             } else {
                 $.each(json, function(index, value) {
