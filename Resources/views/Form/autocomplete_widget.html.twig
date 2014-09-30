@@ -1,7 +1,7 @@
 {% block autocomplete_widget %}
     <div class="control-group autocomplete_div">
         <input type="text" id="{{ form.vars.id }}" name="{{ form.vars.full_name }}" value="{{ form.vars.value }}" {{ block('widget_attributes') }} />
-        <select style="width: 100%" class="autocomplete_select" data-target="#{{ form.vars.id }}" data-route={{ route }}{% if route_params is not empty %} data-route-params="{{ route_params|json_encode }}"{% endif %}>
+        <select style="width: 100%" class="autocomplete_select form-control" data-target="#{{ form.vars.id }}" data-route={{ route }}{% if route_params is not empty %} data-route-params="{{ route_params|json_encode }}"{% endif %}>
             {% if ( object ) %}
                 <option class="autocomplete_placeholder" value="{{ object.id }}">{{ to_string_method ? attribute(object, to_string_method) : object }}</option>
             {% else %}
