@@ -19,6 +19,7 @@ function createDatePicker(element) {
         changeYear: true,
         dateFormat: 'dd/mm/yy',
         showOn: 'button',
+        yearRange: element.data('year-range') ? element.data('year-range') : "-10:+10",
         buttonText: '<i class="fa fa-calendar-o"></i>',
         showButtonPanel: true,
         onSelect: function(){
