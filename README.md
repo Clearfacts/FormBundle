@@ -161,6 +161,12 @@ But I heard someone say he was going to make a generic one, should be here any m
     $builder->add('publish_at', 'tactics_datetime');
     $builder->add('birthdate', 'tactics_date');
     $builder->add('hour_open', 'tactics_time');
+    
+    By default a datepicker allows you to choose a date max 10 years in past or future. 
+    If you want to change this range you can set a 'date-range' attribute when defining the date form field.
+    
+    $builder->add('birthdate', 'tactics_date', ['attr' => ['data-year-range' => '-100:+100']]);
+    
 
     {% javascripts
         '@TacticsFormBundle/Resources/public/js/jquery.maskedinput.min.js'
