@@ -19,7 +19,7 @@
             <tag name="form.type_extension" alias="form" />
         </service>
         <service id="form.type.masked_field" class="Tactics\Bundle\FormBundle\Form\Extension\MaskedFieldTypeExtension">
-            <tag name="form.type_extension" alias="field" />
+            <tag name="form.type_extension" alias="text" />
         </service>
         <service id="form.type.masked_date" class="Tactics\Bundle\FormBundle\Form\Extension\MaskedDateTypeExtension">
             <tag name="form.type_extension" alias="date" />

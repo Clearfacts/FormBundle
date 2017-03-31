@@ -7,6 +7,10 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * Class MaskedFieldTypeExtension
+ * @package Tactics\Bundle\FormBundle\Form\Extension
+ */
 class MaskedFieldTypeExtension extends AbstractTypeExtension
 {
     /**
@@ -20,10 +24,10 @@ class MaskedFieldTypeExtension extends AbstractTypeExtension
      * @param FormBuilder $builder The form builder
      * @param array       $options The options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder->setAttribute('masked_input', $options['masked_input']);
-    }
+//    public function buildForm(FormBuilderInterface $builder, array $options)
+//    {
+//        $builder->setAttribute('masked_input', $options['masked_input']);
+//    }
 
     /**
      * Builds the view.
@@ -38,19 +42,23 @@ class MaskedFieldTypeExtension extends AbstractTypeExtension
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view['masked_input'] = $form->getConfig()->getAttribute('masked_input');
+        if (isset($options['masked_input']) && $options['masked_input']) {
+            $view->vars['masked_input'] = $options['masked_input'];
+        }
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'masked_input' => null,
-        ));
+        $resolver
+            ->setDefaults(array(
+                'masked_input' => null,
+            ))
+        ;
     }
-    
+
     /**
      * Returns the name of the type being extended
      *

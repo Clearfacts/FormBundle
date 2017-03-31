@@ -7,24 +7,12 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * Class MaskedDateTypeExtension
+ * @package Tactics\Bundle\FormBundle\Form\Extension
+ */
 class MaskedDateTypeExtension extends AbstractTypeExtension
 {
-    /**
-     * Builds the form.
-     *
-     * This method gets called after the extended type has built the form to
-     * further modify it.
-     *
-     * @see FormTypeInterface::buildForm()
-     *
-     * @param FormBuilder $builder The form builder
-     * @param array       $options The options
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder->setAttribute('masked_input', $options['masked_input']);
-    }
-
     /**
      * Builds the view.
      *
@@ -38,7 +26,13 @@ class MaskedDateTypeExtension extends AbstractTypeExtension
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars['masked_input'] = $form->getConfig()->getAttribute('masked_input');
+        if (isset($options['masked_input']) && $options['masked_input']) {
+            $view->vars['masked_input'] = $options['masked_input'];
+        }
+
+        if (isset($options['format']) && $options['format']) {
+            $view->vars['format'] = $options['format'];
+        }
     }
 
     /**
@@ -48,7 +42,7 @@ class MaskedDateTypeExtension extends AbstractTypeExtension
     {
         $resolver->setDefaults(array(
             'masked_input' => null,
-            'format'       => 'dd/MM/yyyy',
+            'format' => 'dd/MM/yyyy',
         ));
 
     }
