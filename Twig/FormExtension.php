@@ -23,7 +23,7 @@ class FormExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'form_save_cancel' => new \Twig_Function_Method($this, 'renderButtons', array('is_safe' => array('html')))
+            new \Twig_SimpleFunction('form_save_cancel', [$this, 'renderButtons'], array('is_safe' => array('html')))
         );
     }
 
