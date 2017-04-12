@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AutocompleteType extends AbstractType
 {
@@ -45,16 +45,16 @@ class AutocompleteType extends AbstractType
     /**
      * {@inheritDoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setRequired(array(
             'route',
             'class'
         ))
-        ->setOptional(array(
+        ->setDefined([
             'route_params',
             'to_string_method'
-        ))
+        ])
         ->setDefaults(array(
             'route_params' => array(),
             'to_string_method' => null,
@@ -72,7 +72,7 @@ class AutocompleteType extends AbstractType
         return 'text';
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'autocomplete';
     }

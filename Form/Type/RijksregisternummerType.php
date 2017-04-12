@@ -3,11 +3,11 @@ namespace Tactics\Bundle\FormBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RijksregisternummerType extends AbstractType
 {
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'masked_input' => array(
@@ -22,7 +22,7 @@ class RijksregisternummerType extends AbstractType
         return 'text';
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'rijksregisternummer';
     }

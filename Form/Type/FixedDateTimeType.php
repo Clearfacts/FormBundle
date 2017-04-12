@@ -15,7 +15,7 @@ use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToTimestampTra
 use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToRfc3339Transformer;
 use Symfony\Component\Form\Extension\Core\DataTransformer\ArrayToPartsTransformer;
 use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Overrides the symfony DateTimeType with two additional widget options: 
@@ -143,7 +143,7 @@ class FixedDateTimeType extends \Symfony\Component\Form\Extension\Core\Type\Date
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'datetime';
     }    
