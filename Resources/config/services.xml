@@ -13,22 +13,22 @@
 
         <!-- Form Extensions -->
         <service id="tactics.form.widget_extension" class="Tactics\Bundle\FormBundle\Form\Extension\WidgetFormTypeExtension">
-            <tag name="form.type_extension" alias="form" />
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType" />
         </service>
         <service id="tactics.form.legend_extension" class="Tactics\Bundle\FormBundle\Form\Extension\LegendFormTypeExtension">
-            <tag name="form.type_extension" alias="form" />
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType" />
         </service>
         <service id="form.type.masked_field" class="Tactics\Bundle\FormBundle\Form\Extension\MaskedFieldTypeExtension">
-            <tag name="form.type_extension" alias="text" />
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\TextType" />
         </service>
         <service id="form.type.masked_date" class="Tactics\Bundle\FormBundle\Form\Extension\MaskedDateTypeExtension">
-            <tag name="form.type_extension" alias="date" />
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\DateType" />
         </service>
         <service id="form.type.support_text" class="Tactics\Bundle\FormBundle\Form\Extension\SupportTextTypeExtension">
-            <tag name="form.type_extension" alias="field" />
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType" />
         </service>
         <service id="form.type.help_tooltip" class="Tactics\Bundle\FormBundle\Form\Extension\HelpTooltipTypeExtension">
-            <tag name="form.type_extension" alias="field" />
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType" />
         </service>
 
         <!-- Field Types -->
