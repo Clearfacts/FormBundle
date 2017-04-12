@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormBuilder;
  */
 class DatumType extends DateType
 {
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'datum';
     }
