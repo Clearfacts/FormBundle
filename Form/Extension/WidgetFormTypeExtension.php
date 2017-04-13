@@ -72,13 +72,11 @@ class WidgetFormTypeExtension extends AbstractTypeExtension
                 'widget_controls_attr' => array(),
             )
         );
-        $resolver->setAllowedValues(array(
-                'widget_type' => array(
-                    'inline',
-                    '',
-                )
-            )
-        );
+
+        $resolver->setAllowedValues('widget_type', [
+            'inline',
+            '',
+        ]);
     }
 
     /**
