@@ -37,9 +37,9 @@ class DateType extends AbstractType
                     'placeholder' => ' ',
                 )
             ))
-            ->setAllowedValues(array(
-                'widget' => array('single_text')
-            ))
+            ->setAllowedValues(
+                'widget' , array('single_text')
+            )
         ;
     }
 
@@ -48,7 +48,7 @@ class DateType extends AbstractType
      */
     public function getParent()
     {
-        return 'date';
+        return \Symfony\Component\Form\Extension\Core\Type\DateType::class;
     }
 
     /**
