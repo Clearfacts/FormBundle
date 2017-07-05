@@ -9,7 +9,9 @@ jQuery(document).ready(function($) {
  * @param element
  */
 function createMask(element) {
-    element.mask(element.attr('masked-input-mask'), {
-        placeholder: element.attr('masked-input-placeholder')
-    });
+    if(element.attr('masked-input-mask')){
+        element.mask(element.attr('masked-input-mask'), {
+            placeholder: element.attr('masked-input-placeholder')
+        });
+    }
 }
