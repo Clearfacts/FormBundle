@@ -9,9 +9,8 @@
     "email": "joris@tactics.be"
   }],
   "require": {
-    "doctrine/common": "2.8",
     "symfony/form": "~4.0",
-    "twig/twig": "^2.0"
+    "twig/twig": "^2.4"
   },
 
   "autoload": {
