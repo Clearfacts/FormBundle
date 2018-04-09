@@ -9,7 +9,9 @@
     "email": "joris@tactics.be"
   }],
   "require": {
-    "symfony/symfony": "~4.0",
+    "doctrine/common": "2.8",
+    "symfony/options-resolver": "~4.0",
+    "symfony/form": "~4.0",
     "twig/twig": "^2.0"
   },
   "autoload": {
