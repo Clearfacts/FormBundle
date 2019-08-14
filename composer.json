@@ -9,12 +9,12 @@
     "email": "joris@tactics.be"
   }],
   "require": {
-    "symfony/symfony": "~3.0",
+    "symfony/symfony": "4.0",
     "twig/twig": "^2.0"
   },
   "autoload": {
     "psr-0": { "Tactics\\Bundle\\FormBundle": "" }
   },
   "target-dir": "Tactics/Bundle/FormBundle",
-  "minimum-stability": "dev"
+  "minimum-stability": "stable"
 }
