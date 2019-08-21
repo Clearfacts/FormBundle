@@ -1,5 +1,5 @@
 {
-  "name": "tactics/form-bundle",
+  "name": "clearfacts/form-bundle",
   "description": "FormBundle",
   "keywords": ["form", "bundle"],
   "type": "symfony-bundle",
