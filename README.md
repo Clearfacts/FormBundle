@@ -226,3 +226,8 @@ Polyfill fields:
     and import following javascripts :
       - '@TacticsFormBundle/Resources/public/js/tacticsform-datum-input.js'
       - '@TacticsFormBundle/Resources/public/js/chosen.jquery.min.js'
+
+## Technical debt links
+
+[Barometer IT](https://wolterskluwer.barometerit.com/b/system/041800002496)
+[SonarQube Project](https://sonarqube.cloud-dev.wolterskluwer.eu//dashboard?id=clearfacts%3AFormBundle)
